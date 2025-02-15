@@ -17,7 +17,10 @@ void setup()
     {
         pinMode(LEDS[i], OUTPUT);
     }
+}
 
+void loop()
+{
     for (int i = 0; i < 6; i++)
     {
         digitalWrite(LEDS[i], HIGH);
@@ -31,8 +34,4 @@ void setup()
         delay(DELAY_MS);
         digitalWrite(LEDS[i], LOW);
     }
-}
-
-void loop()
-{
 }
