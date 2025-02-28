@@ -20,14 +20,27 @@ int state = 0;
 
 void loop()
 {
-    int sensorValue = analogRead(A0);
+    int buttonVal = digitalRead(BUTTON1_PIN);
 
-    float voltage = sensorValue * (5.0 / 1023.0);
-    float resistance = map(sensorValue, 0, 1023, 0, 10000);
+    if ((buttonVal == HIGH) && (oldVal == LOW))
+    {
+        state = 1 - state;
+        delay(50);
+    }
 
-    Serial.print(resistance);
-    Serial.print(" Ohm, ");
+    oldVal = buttonVal;
 
-    Serial.print(voltage);
-    Serial.println(" V");
+    if (state == 1)
+    {
+        int sensorValue = analogRead(A0);
+
+        float voltage = sensorValue * (5.0 / 1023.0);
+        float resistance = map(sensorValue, 0, 1023, 0, 10000);
+
+        Serial.print(resistance);
+        Serial.print(" Ohm, ");
+
+        Serial.print(voltage);
+        Serial.println(" V");
+    }
 }
