@@ -3,6 +3,8 @@
 // second LED will turn On if the second pushbutton switch is press Off (State 0), otherwise
 // the second LED is Off.
 
+#include <Arduino.h>
+
 const int LED1_PIN = 13;
 const int LED2_PIN = 11;
 const int BUTTON1_PIN = 2;
@@ -16,26 +18,48 @@ void setup()
     pinMode(BUTTON2_PIN, INPUT);
 }
 
+int oldVal = 0;
+int state = 0;
+
+int oldVal2 = 0;
+int state2 = 0;
+
 void loop()
 {
-    int button1State = digitalRead(BUTTON1_PIN);
+    int buttonVal1 = digitalRead(BUTTON1_PIN);
 
-    if (button1State == HIGH)
+    if ((buttonVal1 == HIGH) && (oldVal == LOW))
+    {
+        state = 1 - state;
+        delay(50);
+    }
+
+    oldVal = buttonVal1;
+
+    if (state == 1)
     {
         digitalWrite(LED1_PIN, HIGH);
     }
-    else
+    if (state != 1)
     {
         digitalWrite(LED1_PIN, LOW);
     }
 
-    int button2State = digitalRead(BUTTON2_PIN);
+    int buttonVal2 = digitalRead(BUTTON2_PIN);
 
-    if (button2State == HIGH)
+    if ((buttonVal2 == HIGH) && (oldVal2 == LOW))
+    {
+        state2 = 1 - state2;
+        delay(50);
+    }
+
+    oldVal2 = buttonVal2;
+
+    if (state2 == 1)
     {
         digitalWrite(LED2_PIN, LOW);
     }
-    else
+    if (state2 != 1)
     {
         digitalWrite(LED2_PIN, HIGH);
     }
