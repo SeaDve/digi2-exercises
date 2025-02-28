@@ -11,17 +11,27 @@ void setup()
     pinMode(BUTTON1_PIN, INPUT);
 }
 
+int old_val = 0;
+int state = 0;
+
 void loop()
 {
-    int buttonState = digitalRead(BUTTON1_PIN);
+    int buttonVal = digitalRead(BUTTON1_PIN);
 
-    if (buttonState == HIGH)
+    if ((buttonVal == HIGH) && (old_val == LOW))
     {
-
-        digitalWrite(LED1_PIN, LOW);
+        state = 1 - state;
+        delay(50);
     }
-    else
+
+    old_val = buttonVal;
+
+    if (state == 1)
     {
         digitalWrite(LED1_PIN, HIGH);
+    }
+    if (state != 1)
+    {
+        digitalWrite(LED1_PIN, LOW);
     }
 }
