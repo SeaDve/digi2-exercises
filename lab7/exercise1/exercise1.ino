@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 const int stepsPerRevolution = 200;
-const int stepFactor = 10.25;
+const int stepFactor = 20.25;
 Stepper stepper(stepsPerRevolution, 8, 9, 10, 11);
 
 void setup()
@@ -30,7 +30,7 @@ void loop()
             // Rotate stepper motor clockwise and counterclockwise
             Serial.println("Rotate stepper motor clockwise and counterclockwise");
             stepper.step(stepsPerRevolution * stepFactor);
-            delay(1000);
+            delay(3000);
             stepper.step(-stepsPerRevolution * stepFactor);
             delay(1000);
             break;
