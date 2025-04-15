@@ -1,13 +1,13 @@
 #include <Arduino.h>
 
-int ledpin = 9;
+int ledPin = 9;
 float potentiometermaxvalue = 5000;
 float resistance;
 float voltage;
 float brightness;
 void setup()
 {
-    pinMode(ledpin, OUTPUT);
+    pinMode(ledPin, OUTPUT);
     Serial.begin(9600);
 }
 
@@ -30,5 +30,7 @@ void loop()
 
     Serial.println();
 
-    analogWrite(ledpin, brightness);
+    analogWrite(ledPin, brightness);
+
+    delay(200);
 }
