@@ -1,6 +1,5 @@
-
-#include <Stepper.h>
 #include <Arduino.h>
+#include <Stepper.h>
 
 const int stepsPerRevolution = 200;
 const int stepFactor = 20.25;
