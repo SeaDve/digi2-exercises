@@ -26,46 +26,32 @@ void loop()
         switch (serial)
         {
         case '1':
-            // Rotate stepper motor clockwise and counterclockwise
-            Serial.println("Rotate stepper motor clockwise and counterclockwise");
             stepper.step(stepsPerRevolution * stepFactor);
             delay(3000);
             stepper.step(-stepsPerRevolution * stepFactor);
             delay(1000);
             break;
         case '2':
-            // Rotate stepper motor counterclockwise by 45
-            Serial.println("Rotate stepper motor counterclockwise by 45");
             stepper.step(-stepsPerRevolution / 8 * stepFactor);
             delay(1000);
             break;
         case '3':
-            // Rotate stepper motor counterclockwise by 90
-            Serial.println("Rotate stepper motor counterclockwise by 90");
             stepper.step(-stepsPerRevolution / 4 * stepFactor);
             delay(1000);
             break;
         case '4':
-            // Rotate stepper motor counterclockwise by 135
-            Serial.println("Rotate stepper motor counterclockwise by 135");
             stepper.step(-stepsPerRevolution * 3 / 8 * stepFactor);
             delay(1000);
             break;
         case '5':
-            // Rotate stepper motor counterclockwise by 180
-            Serial.println("Rotate stepper motor counterclockwise by 180");
             stepper.step(-stepsPerRevolution / 2 * stepFactor);
             delay(1000);
             break;
         case '6':
-            // Rotate stepper motor counterclockwise by 270
-            Serial.println("Rotate stepper motor counterclockwise by 270");
             stepper.step(-stepsPerRevolution * 3 / 4 * stepFactor);
             delay(1000);
             break;
         case '7':
-            // Rotate stepper motor counterclockwise by 360 OR 1 revolution
-            Serial.println("Rotate stepper motor counterclockwise by 360 OR 1 revolution");
             stepper.step(-stepsPerRevolution * stepFactor);
             delay(1000);
             break;
